@@ -1,4 +1,5 @@
 ## Pour pouvoir démarrer le projet :
 ### • Entrez "npm start" dans le terminal du projet
-### • Puis entrez "npm install react-router-dom" pour installer React-Router qui va gérer le routing
-
+Par défaut, l'application se lancera sur le port 3000 
+### • Puis entrez "npm install react-router-dom" 
+Pour installer React Router qui va gérer le routing de l'application
