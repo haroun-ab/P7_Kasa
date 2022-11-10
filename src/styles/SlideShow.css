@@ -1,0 +1,58 @@
+.apartment-page {
+  margin: 30px 5%;
+}
+
+.slideshow-container {
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.slideshow-container .images-list {
+  height: 450px;
+  display: flex;
+}
+
+.slideshow-container .images-list img {
+  min-width: 100%;
+  height: auto;
+  object-fit: cover;
+  order: 4;
+  transition: 500ms;
+}
+
+.slideshow-container img:first-child {
+  order: 2;
+}
+
+.slideshow-container img:nth-child(2) {
+  order: 3;
+}
+
+.slideshow-container img:nth-child(3) {
+  order: 1;
+}
+
+.slideshow-container svg {
+  position: absolute;
+  z-index: 1;
+  font-size: 6rem;
+  cursor: pointer;
+  transition: 500ms;
+  opacity: 100%;
+  user-select: none;
+}
+
+.slideshow-container svg:hover {
+  transform: scale3d(1.1, 1.1, 1);
+}
+
+.slideshow-container svg.left-arrow {
+  top: 42%;
+  left: 0;
+}
+
+.slideshow-container svg.right-arrow {
+  top: 42%;
+  right: 0;
+}

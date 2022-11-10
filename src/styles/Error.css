@@ -1,0 +1,24 @@
+.error-page {
+  text-align: center;
+  margin: 125px 0 200px 0;
+  animation: appear 2000ms;
+}
+.error-page h1 {
+  font-size: 250px;
+  margin: 0;
+}
+.error-page p {
+  font-size: 30px;
+  font-weight: 500;
+  margin-bottom: 100px;
+}
+.error-page a {
+  font-size: 17px;
+  font-weight: 600;
+  transition: 300ms;
+  padding: 5px;
+}
+
+.error-page a:hover {
+  background-color: #0505050d;
+}

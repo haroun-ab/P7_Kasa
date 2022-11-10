@@ -1,0 +1,34 @@
+footer {
+  background: rgb(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-content {
+  text-align: center;
+}
+.footer-content p {
+  color: white;
+  font-size: 21px;
+  font-weight: 500;
+}
+
+.footer-content svg {
+  width: 120px;
+  margin-top: 50px;
+}
+
+@media (max-width: 768px) {
+  .footer-content p {
+    margin: 50px;
+    font-size: 12px;
+    font-weight: 400;
+  }
+}
+@media (max-width: 1024px) {
+  .footer-content {
+    height: 200px;
+  }
+}

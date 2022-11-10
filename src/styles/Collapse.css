@@ -1,0 +1,156 @@
+/*Header avec image*/
+.about-page {
+  margin-bottom: 150px;
+}
+.about-page .img-header::before {
+  background-image: url('../assets/about_header.jpg');
+  background-position-x: 75%;
+  background-position-y: 30%;
+}
+@media (max-width: 1024px) {
+  .about-page .img-header {
+    height: 500px;
+    background-position-x: 0;
+  }
+  .about-page .img-header::before {
+    background-image: url('../assets/about_header_mobile_x3.jpg');
+    height: 500px;
+    filter: grayscale(35%) brightness(100%) saturate(180%) contrast(80%);
+    object-fit: cover;
+  }
+}
+@media (max-width: 762px) {
+  .about-page .img-header {
+    height: 250px;
+  }
+  .about-page .img-header::before {
+    height: 250px;
+    filter: grayscale(33%) brightness(90%) saturate(150%) contrast(150%)
+      invert(15%);
+  }
+}
+
+/*Contenu page A propos */
+.collapse-list {
+  margin: 20px 0;
+}
+
+.collapse-list h2 {
+  background-color: var(--main-color);
+  color: white;
+  font-weight: 500;
+  font-size: 20px;
+  padding: 10px 15px;
+  border-radius: 3px;
+  margin: 0;
+  cursor: pointer;
+  position: relative;
+}
+
+.collapse-list h2:hover {
+  background-color: #ff6060aa;
+}
+
+.collapse-list p {
+  background-color: #f6f6f6;
+  color: var(--main-color);
+  font-weight: 400;
+  font-size: 20px;
+  padding: 20px 15px 10px 15px;
+  border-radius: 0px 0px 7px 7px;
+  margin: 0;
+}
+
+.collapse-list section {
+  max-width: 1000px;
+  margin: 30px auto;
+  position: relative;
+  animation: slide-top 800ms ease-out backwards;
+}
+
+.collapse-list section svg {
+  color: rgb(255, 255, 255);
+  position: absolute;
+  top: 10px;
+  right: 23px;
+  font-size: 22px;
+  transition: 500ms;
+}
+
+.collapse-list.row-center {
+  display: flex;
+}
+
+.collapse-list.row-center section {
+  width: 50%;
+}
+
+.collapse-list.row-center section h2 {
+  font-size: 18px;
+}
+
+.collapse-list.row-center section p {
+  font-size: 18px;
+  height: 250px;
+}
+
+.collapse-list.row-center section:nth-child(1) {
+  margin: 0 3% 0 0;
+}
+
+.collapse-list.row-center section:nth-child(2) {
+  margin: 0 0 0 3%;
+}
+
+.collapse-list.row-center section svg {
+  position: absolute;
+  top: 8px;
+  right: 23px;
+}
+
+.content-parent {
+  transition: height ease 0.6s;
+}
+
+@keyframes slide-top {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .about-page .collapse-list {
+    margin: 70px 5% 30% 5%;
+  }
+  .content-parent {
+    transition: height ease 0.2s;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-page .collapse-list {
+    margin: 50px 5% 180px 5%;
+  }
+  .about-page .collapse-list p {
+    font-weight: 400;
+    font-size: 13px;
+    padding: 20px 10px 15px 15px;
+    line-height: 18px;
+  }
+  .about-page .collapse-list h2 {
+    font-size: 15px;
+    padding: 10px;
+  }
+
+  .about-page .collapse-list section svg {
+    top: 8px;
+    right: 15px;
+    font-size: 18px;
+    transition: 400ms;
+  }
+}

@@ -1,0 +1,36 @@
+.kasa-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  margin: 30px 5%;
+}
+.kasa-banner nav {
+  display: flex;
+}
+
+.kasa-banner nav a {
+  margin-left: 50px;
+  font-size: 20px;
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 2px solid rgba(255, 255, 255, 0);
+  transition: 400ms;
+}
+
+.kasa-banner nav a:hover {
+  background-color: #0505050d;
+}
+
+@media (max-width: 762px) {
+  .kasa-banner {
+    margin: 30px 4%;
+  }
+  .kasa-banner nav a {
+    margin: 0;
+    margin-left: 25px;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+}
