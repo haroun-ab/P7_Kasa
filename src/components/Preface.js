@@ -5,11 +5,19 @@ function Preface(props) {
   return data.map((apartment) =>
     apartment.id === props.paramsId ? (
       <section className="preface" key={apartment.id}>
-        <section className="preface-header">
+        <section className="header-and-tags">
           <div className="title">
             <h1>{apartment.title}</h1>
             <p>{apartment.location}</p>
           </div>
+          <div className="tags">
+            {apartment.tags.map((tag) => (
+              <p key={tag}>{tag}</p>
+            ))}
+          </div>
+        </section>
+
+        <section className="host-and-rating">
           <div className="host">
             <p>{apartment.host.name}</p>
             <img
@@ -17,14 +25,7 @@ function Preface(props) {
               alt={'photo de profile de ' + apartment.host.name}
             ></img>
           </div>
-        </section>
 
-        <section className="tags-and-rating">
-          <div className="tags">
-            {apartment.tags.map((tag) => (
-              <p key={tag}>{tag}</p>
-            ))}
-          </div>
           {displayRating(apartment.rating)}
         </section>
       </section>

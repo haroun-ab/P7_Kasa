@@ -11,18 +11,6 @@ function Collapsible(props) {
       <h2
         onClick={() => {
           setOpen(!open);
-          document.querySelector('.content').animate(
-            [
-              // keyframes
-              { transform: 'transform: scaleY(0)' },
-              { transform: 'transform: scaleY(1)' },
-            ],
-            {
-              // timing options
-              duration: 1000,
-              iterations: 1,
-            }
-          );
         }}
       >
         {props.label}
@@ -57,7 +45,22 @@ function Collapsible(props) {
             : { height: '0px', overflow: 'hidden' }
         }
       >
-        <div className="content">{props.children}</div>
+        <div
+          className="content"
+          style={
+            open
+              ? {
+                  transform: 'scaleY(1)',
+                  opacity: '1',
+                }
+              : {
+                  transform: 'scaleY(.5) translateY(-150px)',
+                  opacity: '0',
+                }
+          }
+        >
+          {props.children}
+        </div>
       </div>
     </section>
   );

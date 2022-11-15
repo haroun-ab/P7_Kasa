@@ -3,10 +3,6 @@ import '../styles/Banner.css';
 import { Link } from 'react-router-dom';
 
 function Banner() {
-  // if (document.location.href.split('/')[3] == 'informations') {
-  //   document.querySelector('nav a').style.
-  // }
-
   return (
     <header className="kasa-banner">
       <Link to={'/'}>
@@ -42,7 +38,7 @@ function Banner() {
       <nav>
         <Link
           style={
-            document.location.href.split('/')[3] === ''
+            document.location.pathname === '/'
               ? { borderBottom: '2px solid var(--main-color)' }
               : { border: '1px solid transparent' }
           }
@@ -50,10 +46,9 @@ function Banner() {
         >
           Accueil
         </Link>
-
         <Link
           style={
-            document.location.href.split('/')[3] === 'informations'
+            document.location.pathname === '/informations'
               ? { borderBottom: '2px solid var(--main-color)' }
               : { border: '1px solid transparent' }
           }

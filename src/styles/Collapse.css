@@ -45,6 +45,7 @@
   margin: 0;
   cursor: pointer;
   position: relative;
+  z-index: 5;
 }
 
 .collapse-list h2:hover {
@@ -86,12 +87,12 @@
 }
 
 .collapse-list.row-center section h2 {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .collapse-list.row-center section p {
-  font-size: 18px;
-  height: 250px;
+  font-size: 16px;
+  min-height: 150px;
 }
 
 .collapse-list.row-center section:nth-child(1) {
@@ -110,6 +111,10 @@
 
 .content-parent {
   transition: height ease 0.6s;
+}
+
+.content {
+  transition: 300ms;
 }
 
 @keyframes slide-top {
@@ -152,5 +157,12 @@
     right: 15px;
     font-size: 18px;
     transition: 400ms;
+  }
+  .collapse-list.row-center {
+    flex-direction: column;
+  }
+  .collapse-list.row-center section {
+    margin: 15px 0 !important;
+    width: 100%;
   }
 }

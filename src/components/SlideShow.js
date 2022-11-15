@@ -1,9 +1,89 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
 import '../styles/SlideShow.css';
 import data from '../back/data';
 
 function Carousel(props) {
-  let x = props.translateX;
+  let index = props.translateValue;
+  const end = true;
+  // const [slideNumber, setSlideNumber] = useState(0);
+  // const slideWidth = 500;
+  // const slideHeight = 150;
+  // let sliderTotalWidth = slideNumber * slideWidth;
+  // useEffect(() => {
+  //   setSlideNumber(document.querySelectorAll('.images-list img').length);
+  // }, []);
+  // console.log(sliderTotalWidth);
+  console.log(index);
+
+  // gauche
+  function slideLeft() {
+    const slideArray = document.querySelectorAll(
+      '.slideshow-container .images-list img'
+    );
+    console.log(slideArray.length);
+
+    if (index < 0) {
+      let translateValue = index + 100;
+      carouselMove(slideArray, translateValue);
+      index = translateValue;
+    }
+    if (index === 0) {
+      document
+        .querySelector('.images-list')
+        .insertBefore(
+          document.querySelector('.images-list').children[
+            slideArray.length - 1
+          ],
+          document.querySelector('.images-list').children[0]
+        );
+    }
+
+    console.log(index);
+    //   // Désactivation de la flèche gauche quand on arrive au premier slide
+    //   if (index === 0) {
+    //     // récupere la photo 4
+    //     document.querySelector('.left-arrow').style.opacity = '0%';
+    //     document.querySelector('.left-arrow').style.cursor = 'default';
+    //   }
+    //   // Réapparition de la flèche droite quand on reviens sur l'avant dernier slide
+    //   if (index > (slideArray.length - 1) * -100) {
+    //     document.querySelector('.right-arrow').style.opacity = 'initial';
+    //     document.querySelector('.right-arrow').style.cursor = 'pointer';
+    //   }
+  }
+
+  // droite
+  function slideRight() {
+    const slideArray = document.querySelectorAll('.slideshow-container img');
+    console.log(slideArray.length);
+
+    if (index > (slideArray.length - 1) * -100) {
+      let translateValue = index - 100;
+      carouselMove(slideArray, translateValue);
+      index = translateValue;
+    }
+    if (index === (slideArray.length - 1) * -100) {
+      console.log('fin');
+      document
+        .querySelector('.images-list')
+        .insertAdjacentElement(
+          'beforeend',
+          document.querySelector('.images-list').children[0]
+        );
+    }
+    console.log(index);
+    // // Désactivation de la flèche droite quand on arrive au dernier slide
+    // if (index === (slideArray.length - 1) * -100) {
+    //   document.querySelector('.right-arrow').style.opacity = '0';
+    //   document.querySelector('.right-arrow').style.cursor = 'default';
+    // }
+    // // Réapparition de la flèche gauche quand on reviens sur le 2e slide
+    // if (index < 0) {
+    //   document.querySelector('.left-arrow').style.opacity = 'initial';
+    //   document.querySelector('.left-arrow').style.cursor = 'pointer';
+    // }
+  }
 
   return (
     <React.Fragment>
@@ -18,30 +98,7 @@ function Carousel(props) {
                     ? { opacity: '100%' }
                     : { opacity: '0', cursor: 'default' }
                 }
-                onClick={() => {
-                  const slideArray = document.querySelectorAll(
-                    '.slideshow-container img'
-                  );
-                  if (x < 0) {
-                    let translateValue = x + 100;
-                    carouselDisplay(slideArray, translateValue);
-                    x = translateValue;
-                  }
-
-                  // Désactivation de la flèche gauche quand on arrive au premier slide
-                  if (x === 0) {
-                    document.querySelector('.left-arrow').style.opacity = '0%';
-                    document.querySelector('.left-arrow').style.cursor =
-                      'default';
-                  }
-                  // Réapparition de la flèche droite quand on reviens sur l'avant dernier slide
-                  if (x > (slideArray.length - 1) * -100) {
-                    document.querySelector('.right-arrow').style.opacity =
-                      'initial';
-                    document.querySelector('.right-arrow').style.cursor =
-                      'pointer';
-                  }
-                }}
+                onClick={slideLeft}
                 xmlns="http://www.w3.org/2000/svg"
                 width="1em"
                 height="1em"
@@ -58,38 +115,12 @@ function Carousel(props) {
 
               <svg
                 className="right-arrow"
-                style={
-                  apartment.pictures.length > 2
-                    ? { opacity: '100%' }
-                    : { opacity: '0', cursor: 'default' }
-                }
-                onClick={() => {
-                  const slideArray = document.querySelectorAll(
-                    '.slideshow-container img'
-                  );
-                  console.log(slideArray.length);
-                  if (x > (slideArray.length - 1) * -100) {
-                    let translateValue = x - 100;
-                    console.log(x);
-                    carouselDisplay(slideArray, translateValue);
-                    x = translateValue;
-                  }
-                  // Désactivation de la flèche droite quand on arrive au dernier slide
-                  if (x === (slideArray.length - 1) * -100) {
-                    document.querySelector('.right-arrow').style.opacity = '0';
-                    document.querySelector('.right-arrow').style.cursor =
-                      'default';
-                  }
-                  // Réapparition de la flèche gauche quand on reviens sur le 2e slide
-                  if (x < 0) {
-                    document.querySelector('.left-arrow').style.opacity =
-                      'initial';
-                    document.querySelector('.left-arrow').style.cursor =
-                      'pointer';
-                  }
-
-                  console.log(x);
-                }}
+                // style={
+                //   apartment.pictures.length > 2
+                //     ? { opacity: '100%' }
+                //     : { opacity: '0', cursor: 'default' }
+                // }
+                onClick={slideRight}
                 xmlns="http://www.w3.org/2000/svg"
                 width="1em"
                 height="1em"
@@ -109,13 +140,13 @@ function Carousel(props) {
 
                   return (
                     <img
-                      style={
-                        apartment.pictures.length > 1
-                          ? {
-                              transform: 'translateX(-100%)',
-                            }
-                          : { transform: 'translateX(0)' }
-                      }
+                      // style={
+                      //   apartment.pictures.length > 1
+                      //     ? {
+                      //         transform: 'translateX(-100%)',
+                      //       }
+                      //     : { transform: 'translateX(0)' }
+                      // }
                       src={picture}
                       alt="Diapositive de appartement"
                       key={imgName}
@@ -133,10 +164,35 @@ function Carousel(props) {
   );
 }
 
-function carouselDisplay(slideArray, translateValue) {
+function carouselMove(slideArray, translateValue) {
   for (let i = 0; i < slideArray.length; i++) {
     slideArray[i].style.transform = `translateX(${translateValue}%)`;
   }
 }
 
 export default Carousel;
+
+// onClick={() => {
+//   const slideArray = document.querySelectorAll(
+//     '.slideshow-container img'
+//   );
+//   if (x < 0) {
+//     let translateValue = x + 100;
+//     carouselDisplay(slideArray, translateValue);
+//     x = translateValue;
+//   }
+
+//   // Désactivation de la flèche gauche quand on arrive au premier slide
+//   if (x === 0) {
+//     document.querySelector('.left-arrow').style.opacity = '0%';
+//     document.querySelector('.left-arrow').style.cursor =
+//       'default';
+//   }
+//   // Réapparition de la flèche droite quand on reviens sur l'avant dernier slide
+//   if (x > (slideArray.length - 1) * -100) {
+//     document.querySelector('.right-arrow').style.opacity =
+//       'initial';
+//     document.querySelector('.right-arrow').style.cursor =
+//       'pointer';
+//   }
+// }}

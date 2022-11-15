@@ -37,7 +37,7 @@ main {
 }
 
 .apartment-page {
-  margin-bottom: 250px !important;
+  margin-bottom: 150px !important;
 }
 
 .about-page {
@@ -69,5 +69,8 @@ main {
     height: 250px;
     filter: grayscale(33%) brightness(90%) saturate(150%) contrast(150%)
       invert(15%);
+  }
+  .apartment-page {
+    margin-bottom: 100px !important;
   }
 }
