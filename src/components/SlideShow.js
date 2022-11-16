@@ -5,7 +5,7 @@ import data from '../back/data';
 
 function Carousel(props) {
   let index = props.translateValue;
-  const end = true;
+
   // const [slideNumber, setSlideNumber] = useState(0);
   // const slideWidth = 500;
   // const slideHeight = 150;
@@ -23,20 +23,24 @@ function Carousel(props) {
     );
     console.log(slideArray.length);
 
-    if (index < 0) {
+    if (index <= 0) {
       let translateValue = index + 100;
       carouselMove(slideArray, translateValue);
       index = translateValue;
     }
-    if (index === 0) {
-      document
-        .querySelector('.images-list')
-        .insertBefore(
-          document.querySelector('.images-list').children[
-            slideArray.length - 1
-          ],
-          document.querySelector('.images-list').children[0]
-        );
+    if (index > 0) {
+      for (let i = 0; i < slideArray.length; i++) {
+        slideArray[i].style.transform = `translateX(${(slideArray.length - 1) *
+          -100}%)`;
+      }
+      index = (slideArray.length - 1) * -100;
+      //   .querySelector('.images-list')
+      //   .insertBefore(
+      //     document.querySelector('.images-list').children[
+      //       slideArray.length - 1
+      //     ],
+      //     document.querySelector('.images-list').children[0]
+      //   );
     }
 
     console.log(index);
@@ -58,19 +62,24 @@ function Carousel(props) {
     const slideArray = document.querySelectorAll('.slideshow-container img');
     console.log(slideArray.length);
 
-    if (index > (slideArray.length - 1) * -100) {
+    if (index > slideArray.length * -100) {
       let translateValue = index - 100;
       carouselMove(slideArray, translateValue);
       index = translateValue;
     }
-    if (index === (slideArray.length - 1) * -100) {
+    if (index <= slideArray.length * -100) {
+      for (let i = 0; i < slideArray.length; i++) {
+        slideArray[i].style.transform = `translateX(0%)`;
+      }
+      index = 0;
+
       console.log('fin');
-      document
-        .querySelector('.images-list')
-        .insertAdjacentElement(
-          'beforeend',
-          document.querySelector('.images-list').children[0]
-        );
+      // document
+      //   .querySelector('.images-list')
+      //   .insertAdjacentElement(
+      //     'beforeend',
+      //     document.querySelector('.images-list').children[0]
+      //   );
     }
     console.log(index);
     // // Désactivation de la flèche droite quand on arrive au dernier slide
@@ -115,11 +124,11 @@ function Carousel(props) {
 
               <svg
                 className="right-arrow"
-                // style={
-                //   apartment.pictures.length > 2
-                //     ? { opacity: '100%' }
-                //     : { opacity: '0', cursor: 'default' }
-                // }
+                style={
+                  apartment.pictures.length > 2
+                    ? { opacity: '100%' }
+                    : { opacity: '0', cursor: 'default' }
+                }
                 onClick={slideRight}
                 xmlns="http://www.w3.org/2000/svg"
                 width="1em"
