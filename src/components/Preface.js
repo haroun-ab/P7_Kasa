@@ -1,6 +1,7 @@
 import React from 'react';
 import data from '../back/data';
 import '../styles/Preface.css';
+
 function Preface(props) {
   return data.map((apartment) =>
     apartment.id === props.paramsId ? (
@@ -25,7 +26,6 @@ function Preface(props) {
               alt={'photo de profile de ' + apartment.host.name}
             ></img>
           </div>
-
           {displayRating(apartment.rating)}
         </section>
       </section>
@@ -35,7 +35,6 @@ function Preface(props) {
   );
 }
 function displayRating(ratingData) {
-  console.log(ratingData);
   let ratingStars = '';
   const filledStar = (
     <svg

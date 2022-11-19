@@ -6,16 +6,6 @@ import data from '../back/data';
 function Carousel(props) {
   let index = props.translateValue;
 
-  // const [slideNumber, setSlideNumber] = useState(0);
-  // const slideWidth = 500;
-  // const slideHeight = 150;
-  // let sliderTotalWidth = slideNumber * slideWidth;
-  // useEffect(() => {
-  //   setSlideNumber(document.querySelectorAll('.images-list img').length);
-  // }, []);
-  // console.log(sliderTotalWidth);
-  console.log(index);
-
   // gauche
   function slideLeft() {
     const slideArray = document.querySelectorAll(
@@ -34,33 +24,12 @@ function Carousel(props) {
           -100}%)`;
       }
       index = (slideArray.length - 1) * -100;
-      //   .querySelector('.images-list')
-      //   .insertBefore(
-      //     document.querySelector('.images-list').children[
-      //       slideArray.length - 1
-      //     ],
-      //     document.querySelector('.images-list').children[0]
-      //   );
     }
-
-    console.log(index);
-    //   // Désactivation de la flèche gauche quand on arrive au premier slide
-    //   if (index === 0) {
-    //     // récupere la photo 4
-    //     document.querySelector('.left-arrow').style.opacity = '0%';
-    //     document.querySelector('.left-arrow').style.cursor = 'default';
-    //   }
-    //   // Réapparition de la flèche droite quand on reviens sur l'avant dernier slide
-    //   if (index > (slideArray.length - 1) * -100) {
-    //     document.querySelector('.right-arrow').style.opacity = 'initial';
-    //     document.querySelector('.right-arrow').style.cursor = 'pointer';
-    //   }
   }
 
   // droite
   function slideRight() {
     const slideArray = document.querySelectorAll('.slideshow-container img');
-    console.log(slideArray.length);
 
     if (index > slideArray.length * -100) {
       let translateValue = index - 100;
@@ -72,26 +41,7 @@ function Carousel(props) {
         slideArray[i].style.transform = `translateX(0%)`;
       }
       index = 0;
-
-      console.log('fin');
-      // document
-      //   .querySelector('.images-list')
-      //   .insertAdjacentElement(
-      //     'beforeend',
-      //     document.querySelector('.images-list').children[0]
-      //   );
     }
-    console.log(index);
-    // // Désactivation de la flèche droite quand on arrive au dernier slide
-    // if (index === (slideArray.length - 1) * -100) {
-    //   document.querySelector('.right-arrow').style.opacity = '0';
-    //   document.querySelector('.right-arrow').style.cursor = 'default';
-    // }
-    // // Réapparition de la flèche gauche quand on reviens sur le 2e slide
-    // if (index < 0) {
-    //   document.querySelector('.left-arrow').style.opacity = 'initial';
-    //   document.querySelector('.left-arrow').style.cursor = 'pointer';
-    // }
   }
 
   return (
@@ -149,13 +99,6 @@ function Carousel(props) {
 
                   return (
                     <img
-                      // style={
-                      //   apartment.pictures.length > 1
-                      //     ? {
-                      //         transform: 'translateX(-100%)',
-                      //       }
-                      //     : { transform: 'translateX(0)' }
-                      // }
                       src={picture}
                       alt="Diapositive de appartement"
                       key={imgName}
@@ -180,28 +123,3 @@ function carouselMove(slideArray, translateValue) {
 }
 
 export default Carousel;
-
-// onClick={() => {
-//   const slideArray = document.querySelectorAll(
-//     '.slideshow-container img'
-//   );
-//   if (x < 0) {
-//     let translateValue = x + 100;
-//     carouselDisplay(slideArray, translateValue);
-//     x = translateValue;
-//   }
-
-//   // Désactivation de la flèche gauche quand on arrive au premier slide
-//   if (x === 0) {
-//     document.querySelector('.left-arrow').style.opacity = '0%';
-//     document.querySelector('.left-arrow').style.cursor =
-//       'default';
-//   }
-//   // Réapparition de la flèche droite quand on reviens sur l'avant dernier slide
-//   if (x > (slideArray.length - 1) * -100) {
-//     document.querySelector('.right-arrow').style.opacity =
-//       'initial';
-//     document.querySelector('.right-arrow').style.cursor =
-//       'pointer';
-//   }
-// }}

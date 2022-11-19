@@ -1,12 +1,13 @@
 import React from 'react';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import Banner from '../components/Banner';
 import Footer from '../components/Footer';
 import SlideShow from '../components/SlideShow';
 import Preface from '../components/Preface';
 import Collapsible from '../components/Collapse';
 import data from '../back/data';
-import { useNavigate } from 'react-router-dom';
 
 function Article() {
   const paramsId = new URL(document.location.href).searchParams.get('id');
@@ -57,7 +58,6 @@ function Redirect(navigate) {
     const paramsId = new URL(document.location.href).searchParams.get('id');
     useEffect(() => {
       if (doesItExist === 0) {
-        console.log(doesItExist);
         navigate('/article/error::not_found');
       }
     });

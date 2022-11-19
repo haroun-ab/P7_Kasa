@@ -18,23 +18,8 @@
   min-width: 100%;
   height: auto;
   object-fit: cover;
-  /* order: 4; */
   transition: 500ms;
 }
-.slideshow-container .images-list {
-  transition: 500ms;
-}
-/* .slideshow-container img:first-child {
-  order: 2;
-}
-
-.slideshow-container img:nth-child(2) {
-  order: 3;
-}
-
-.slideshow-container img:nth-child(3) {
-  order: 1;
-} */
 
 .slideshow-container svg {
   position: absolute;
@@ -70,14 +55,4 @@
     font-size: 2.5rem;
     top: 45%;
   }
-}
-
-/****************************/
-
-.each-slide-effect > div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-size: cover;
-  height: 350px;
 }
